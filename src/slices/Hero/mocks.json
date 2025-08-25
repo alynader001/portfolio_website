@@ -1,0 +1,52 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"first_name": {
+				"__TYPE__": "FieldContent",
+				"value": "meet",
+				"type": "Text"
+			},
+			"last_name": {
+				"__TYPE__": "FieldContent",
+				"value": "teeth",
+				"type": "Text"
+			},
+			"tag_line": {
+				"__TYPE__": "FieldContent",
+				"value": "garden",
+				"type": "Text"
+			},
+			"resume_button": {
+				"key": "11d81b58-8d05-4d5d-bfbe-2cbf8e4812aa",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "blind"
+				}
+			},
+			"resume_label": {
+				"__TYPE__": "FieldContent",
+				"value": "end",
+				"type": "Text"
+			},
+			"project_button": {
+				"key": "5b37ad2d-925a-44de-82c2-38e58ef363d4",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "muscle"
+				}
+			},
+			"project_label": {
+				"__TYPE__": "FieldContent",
+				"value": "forget",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

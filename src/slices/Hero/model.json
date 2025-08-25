@@ -1,0 +1,76 @@
+{
+  "id": "hero",
+  "type": "SharedSlice",
+  "name": "Hero",
+  "description": "Hero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "first_name": {
+          "type": "Text",
+          "config": {
+            "label": "First Name",
+            "placeholder": ""
+          }
+        },
+        "last_name": {
+          "type": "Text",
+          "config": {
+            "label": "Last Name",
+            "placeholder": ""
+          }
+        },
+        "tag_line": {
+          "type": "Text",
+          "config": {
+            "label": "Tag Line",
+            "placeholder": ""
+          }
+        },
+        "resume_button": {
+          "type": "Link",
+          "config": {
+            "label": "Resume Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "resume_label": {
+          "type": "Text",
+          "config": {
+            "label": "Resume Label",
+            "placeholder": ""
+          }
+        },
+        "project_button": {
+          "type": "Link",
+          "config": {
+            "label": "Project Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "project_label": {
+          "type": "Text",
+          "config": {
+            "label": "Project Label",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
