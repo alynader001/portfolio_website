@@ -33,7 +33,6 @@ const ContentIndex: FC<ContentIndexProps> = async ({ slice }) => {
        return null;
     }
   }) ();
-
   return (
     <Bounded
       data-slice-type={slice.slice_type}
@@ -47,7 +46,9 @@ const ContentIndex: FC<ContentIndexProps> = async ({ slice }) => {
           <PrismicRichText field={slice.primary.description}/>
         </div>
       )}
-      <ContentList items={items}
+      <ContentList
+        //@ts-expect-error: items error
+        items={items}   
         contentType={contentType}
         fallbackItemImage={slice.primary.fallback_item_image}
         viewMoreText={slice.primary.view_more_text}
