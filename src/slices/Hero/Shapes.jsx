@@ -31,39 +31,9 @@ function Geometries() {
   const geometries = [
     // Head
     {
-      position: [0, 2, 0],
-      r: 0.3,
-      geometry: new THREE.DodecahedronGeometry(1) // Robot head
-    },
-    // Body
-    {
       position: [0, 0, 0],
-      r: 0.2,
-      geometry: new THREE.BoxGeometry(2, 2, 1) // Body
-    },
-    // Left arm
-    {
-      position: [-1.5, 0.5, 0],
-      r: 0.4,
-      geometry: new THREE.CylinderGeometry(0.3, 0.3, 1.5) // Arm
-    },
-    // Right arm
-    {
-      position: [1.5, 0.5, 0],
-      r: 0.4,
-      geometry: new THREE.CylinderGeometry(0.3, 0.3, 1.5) // Arm
-    },
-    // Left leg
-    {
-      position: [-0.5, -1.5, 0],
-      r: 0.3,
-      geometry: new THREE.CylinderGeometry(0.3, 0.3, 1.5) // Leg
-    },
-    // Right leg
-    {
-      position: [0.5, -1.5, 0],
-      r: 0.3,
-      geometry: new THREE.CylinderGeometry(0.3, 0.3, 1.5) // Leg
+      r: 0.5,
+      geometry: new THREE.IcosahedronGeometry(3)
     }
   ];
 
