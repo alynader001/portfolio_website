@@ -2,8 +2,8 @@
 
 import clsx from "clsx";
 import React, { useState } from "react";
-import { Content, KeyTextField, asLink } from "@prismicio/client";
-import { PrismicNextLink } from "@prismicio/next";
+import { Content, ImageField, KeyTextField, asLink } from "@prismicio/client";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 import { MdMenu, MdClose } from "react-icons/md";
 import Button from "./Button";
@@ -21,7 +21,7 @@ export default function NavBar({
     <nav aria-label="Main navigation">
       <ul className="flex flex-col justify-between rounded-b-lg bg-slate-50 px-4 py-2 md:m-4 md:flex-row md:items-center md:rounded-xl">
         <div className="flex items-center justify-between">
-          <NameLogo name={settings.data.name} />
+          <NameLogo name={settings.data.name} logo={settings.data.logo}/>
           <button
             aria-expanded={open}
             aria-label="Open menu"
@@ -95,14 +95,20 @@ export default function NavBar({
   );
 }
 
-function NameLogo({ name }: { name: KeyTextField }) {
+function NameLogo({ name, logo }: { name: KeyTextField, logo?: ImageField<never>}) {
   return (
     <Link
       href="/"
       aria-label="Home page"
-      className="text-xl font-extrabold tracking-tighter text-slate-900"
+      className="flex items-center gap-2  text-xl font-extrabold tracking-tighter text-slate-900"
     >
-      {name}
+      {logo && (
+        <PrismicNextImage
+        field={logo}
+        className="h-8 w-auto"
+        />
+      )}
+      {name && <span>{name}</span>}
     </Link>
   );
 }

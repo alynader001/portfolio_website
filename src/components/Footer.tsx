@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React from "react";
 import { createClient } from "@/prismicio";
-import { PrismicNextLink } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 import Bounded from "@/components/Bounded";
 import { isFilled } from "@prismicio/client";
@@ -16,8 +16,14 @@ export default async function Footer() {
         <div className="name flex flex-col items-center justify-center gap-x-4 gap-y-2 sm:flex-row sm:justify-self-start">
           <Link
             href="/"
-            className="text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-green-600"
+            className="flex items-center gap-2 text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-green-600"
           >
+            {settings.data.logo && (
+              <PrismicNextImage
+              field={settings.data.logo}
+              className="h-12 w-auto filter invert"
+              />
+            )}
             {settings.data.name}
           </Link>
           <span

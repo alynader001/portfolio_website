@@ -79,6 +79,14 @@
           "allowText": true,
           "repeat": false
         }
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
       }
     },
     "SEO and Metadata": {

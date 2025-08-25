@@ -502,7 +502,18 @@ interface SettingsDocumentData {
     unknown,
     prismic.FieldState,
     never
-  > /**
+  >;
+
+  /**
+   * Logo field in *Settings*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  logo: prismic.ImageField<never> /**
    * Meta Title field in *Settings*
    *
    * - **Field Type**: Text
