@@ -545,7 +545,35 @@ interface SettingsDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  resume_label: prismic.KeyTextField /**
+  resume_label: prismic.KeyTextField;
+
+  /**
+   * Phone Number field in *Settings*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.phone_number
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  phone_number: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Phone Number Label field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.phone_number_label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  phone_number_label: prismic.KeyTextField /**
    * Meta Title field in *Settings*
    *
    * - **Field Type**: Text

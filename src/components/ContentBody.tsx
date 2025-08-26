@@ -24,7 +24,7 @@ export default function ContentBody({ page }: { page: Content.BlogPostDocument |
   return (
     <Bounded as="article">
       <div className="rounded-2xl bg-white px-4 py-10 md:px-8 md:py-20">
-        <Heading as="h1" className="!text-black
+        <Heading as="h1" className="!text-slate-700
         ">
           {page.data.title}
         </Heading>
@@ -33,7 +33,7 @@ export default function ContentBody({ page }: { page: Content.BlogPostDocument |
             <span key={tag}>{tag}</span>
           ))}
         </div>
-        <p className="mt-8 border-b border-slate-600 text-xl font-medium text-black">
+        <p className="mt-8 border-b border-slate-600 text-xl font-medium text-slate-600">
           {formattedDate}
         </p>
         <div className="prose prose-lg mt-12 w-full max-w-none md:mt-20 text-black">

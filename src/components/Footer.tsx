@@ -6,12 +6,30 @@ import Link from "next/link";
 import Bounded from "@/components/Bounded";
 import { isFilled } from "@prismicio/client";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import Heading from "./Heading";
 
 export default async function Footer() {
   const client = createClient();
   const settings = await client.getSingle("settings");
   return (
     <Bounded as="footer" className="text-slate-600">
+      <Heading as="h2" size="lg">
+        {"Contact"}
+      </Heading>
+      <div className="mb-24 ml-6 mt-4 max-w-prose md:ml-12 flex text-xl font-bold flex-col gap-2">
+        <PrismicNextLink
+        field={settings.data.cta_link}
+        className="text-slate-300"
+        >
+        {settings.data.cta_label} 
+        </PrismicNextLink>
+        <PrismicNextLink
+        field={settings.data.phone_number}
+        className="text-slate-300"
+        >
+          {settings.data.phone_number_label}
+        </PrismicNextLink>
+      </div>
       <div className="container mx-auto mb-10 flex flex-col items-center justify-between gap-6 sm:flex-row ">
         <div className="name flex flex-col items-center justify-center gap-x-4 gap-y-2 sm:flex-row sm:justify-self-start">
           <Link

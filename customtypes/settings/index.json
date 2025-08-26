@@ -105,6 +105,24 @@
           "label": "Resume Label",
           "placeholder": ""
         }
+      },
+      "phone_number": {
+        "type": "Link",
+        "config": {
+          "label": "Phone Number",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "phone_number_label": {
+        "type": "Text",
+        "config": {
+          "label": "Phone Number Label",
+          "placeholder": ""
+        }
       }
     },
     "SEO and Metadata": {
