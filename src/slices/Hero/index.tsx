@@ -31,7 +31,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
               slice.primary.first_name + " " + slice.primary.last_name
               }>
             <span className="text-slate-300">{slice.primary.first_name}</span>
-            <span className="-mt-[.2em] block text-slate-400">{slice.primary.last_name}</span>
+            <span className="-mt-[.2em] block text-slate-300">{slice.primary.last_name}</span>
             <span className="block bg-gradient-to-tr from-green-600 via-green-200
            to-green-600 bg-clip-text text-2xl font-bold uppercase tracking-[.2em]
             text-transparent opacity-100 md:text-4xl">{slice.primary.tag_line}</span>
