@@ -26,7 +26,7 @@ export default function NavBar({
         }
       }
     `}</style>
-    <nav aria-label="Main navigation">
+    <nav aria-label="Main navigation" className="md:-mx-4">
       <ul className="flex flex-col justify-between rounded-b-lg bg-slate-50 px-4 py-2 md:m-4 md:flex-row md:items-center md:rounded-xl">
         <div className="flex items-center justify-between">
           <NameLogo
