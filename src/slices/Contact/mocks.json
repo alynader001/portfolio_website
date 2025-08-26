@@ -1,0 +1,32 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"email": {
+				"key": "4dea9a66-50d6-40e2-89de-17b2e3a5c154",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "exist"
+				}
+			},
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "tank",
+				"type": "Text"
+			},
+			"phone_number": {
+				"key": "3431451b-882d-4c8c-86dd-bba3b7663870",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "leaving"
+				}
+			}
+		},
+		"items": []
+	}
+]

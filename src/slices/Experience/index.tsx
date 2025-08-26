@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import Bounded from "@/components/Bounded";
+import Heading from "@/components/Heading";
 
 /**
  * Props for `Experience`.
@@ -12,41 +14,34 @@ export type ExperienceProps = SliceComponentProps<Content.ExperienceSlice>;
  */
 const Experience: FC<ExperienceProps> = ({ slice }) => {
   return (
-    <section
+    <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      Placeholder component for experience (variation: {slice.variation})
-      slices.
-      <br />
-      <strong>You can edit this slice directly in your code editor.</strong>
-      {/**
-       * 💡 Use Prismic MCP with your code editor
-       *
-       * Get AI-powered help to build your slice components — based on your actual model.
-       *
-       * ▶️ Setup:
-       * 1. Add a new MCP Server in your code editor:
-       *
-       * {
-       *   "mcpServers": {
-       *     "Prismic MCP": {
-       *       "command": "npx",
-       *       "args": ["-y", "@prismicio/mcp-server@latest"]
-       *     }
-       *   }
-       * }
-       *
-       * 2. Select a model optimized for coding (e.g. Claude 3.7 Sonnet or similar)
-       *
-       * ✅ Then open your slice file and ask your code editor:
-       *    "Code this slice"
-       *
-       * Your code editor reads your slice model and helps you code faster ⚡
-       * 🎙️ Give your feedback: https://community.prismic.io/t/help-us-shape-the-future-of-slice-creation/19505
-       * 📚 Documentation: https://prismic.io/docs/ai#code-with-prismics-mcp-server
-       */}
-    </section>
+      <Heading as="h2" size="md">
+        {slice.primary.heading}
+      </Heading>
+        {slice.primary.repeatable.map((item, index)=>(
+          <div key={index} className="ml-6 mt-8 max-w-prose md:ml-12 md:mt-16">
+            <Heading as="h3" size="sm">
+              {item.title}
+            </Heading>
+            <div className="mt-1 flex w-fit items-center gap-1 text-2xl font-semibold tracking-tight text-slate-300">
+              {item.institution}
+            </div>
+            <div className="flex w-fit items-center gap-w text-sm font-medium tracking-tight text-slate-300">
+              {item.location}
+            </div>
+            <div className="flex w-fit items-center gap-w text-sm font-medium tracking-tight text-slate-300">
+              {item.time_period}
+            </div>
+            <div className="prose prose-lg prose-invert mt-4">
+              <PrismicRichText field={item.description} />
+            </div>
+          </div>
+        ))}
+      
+    </Bounded>  
   );
 };
 

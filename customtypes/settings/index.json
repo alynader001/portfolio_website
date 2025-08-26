@@ -87,6 +87,24 @@
           "constraint": {},
           "thumbnails": []
         }
+      },
+      "resume_link": {
+        "type": "Link",
+        "config": {
+          "label": "Resume Link",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      },
+      "resume_label": {
+        "type": "Text",
+        "config": {
+          "label": "Resume Label",
+          "placeholder": ""
+        }
       }
     },
     "SEO and Metadata": {

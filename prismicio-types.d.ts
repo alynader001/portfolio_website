@@ -167,7 +167,7 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomepageDocumentDataSlicesSlice = HeroSlice;
+type HomepageDocumentDataSlicesSlice = ContactSlice | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -232,7 +232,11 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = ContentIndexSlice | BiographySlice;
+type PageDocumentDataSlicesSlice =
+  | ContactSlice
+  | ExperienceSlice
+  | ContentIndexSlice
+  | BiographySlice;
 
 /**
  * Content for Page documents
@@ -513,7 +517,35 @@ interface SettingsDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
-  logo: prismic.ImageField<never> /**
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Resume Link field in *Settings*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.resume_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  resume_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Resume Label field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.resume_label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  resume_label: prismic.KeyTextField /**
    * Meta Title field in *Settings*
    *
    * - **Field Type**: Text
@@ -659,6 +691,77 @@ type BiographySliceVariation = BiographySliceDefault;
 export type BiographySlice = prismic.SharedSlice<
   "biography",
   BiographySliceVariation
+>;
+
+/**
+ * Primary content in *Contact → Default → Primary*
+ */
+export interface ContactSliceDefaultPrimary {
+  /**
+   * Heading field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * email field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.email
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  email: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * phone number field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.phone_number
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  phone_number: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Default variation for Contact Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Contact*
+ */
+type ContactSliceVariation = ContactSliceDefault;
+
+/**
+ * Contact Shared Slice
+ *
+ * - **API ID**: `contact`
+ * - **Description**: Contact
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactSlice = prismic.SharedSlice<
+  "contact",
+  ContactSliceVariation
 >;
 
 /**
@@ -919,14 +1022,14 @@ export interface HeroSliceDefaultPrimary {
   resume_label: prismic.KeyTextField;
 
   /**
-   * Project Button field in *Hero → Default → Primary*
+   * Projects Button field in *Hero → Default → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.project_button
+   * - **API ID Path**: hero.default.primary.projects_button
    * - **Documentation**: https://prismic.io/docs/fields/link
    */
-  project_button: prismic.LinkField<
+  projects_button: prismic.LinkField<
     string,
     string,
     unknown,
@@ -935,14 +1038,24 @@ export interface HeroSliceDefaultPrimary {
   >;
 
   /**
-   * Project Label field in *Hero → Default → Primary*
+   * Projects Label field in *Hero → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.project_label
+   * - **API ID Path**: hero.default.primary.projects_label
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
-  project_label: prismic.KeyTextField;
+  projects_label: prismic.KeyTextField;
+
+  /**
+   * Portrait field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.portrait
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  portrait: prismic.ImageField<never>;
 }
 
 /**
@@ -1103,6 +1216,10 @@ declare module "@prismicio/client" {
       BiographySliceDefaultPrimary,
       BiographySliceVariation,
       BiographySliceDefault,
+      ContactSlice,
+      ContactSliceDefaultPrimary,
+      ContactSliceVariation,
+      ContactSliceDefault,
       ContentIndexSlice,
       ContentIndexSliceDefaultPrimary,
       ContentIndexSliceVariation,

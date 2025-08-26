@@ -51,10 +51,10 @@
             "placeholder": ""
           }
         },
-        "project_button": {
+        "projects_button": {
           "type": "Link",
           "config": {
-            "label": "Project Button",
+            "label": "Projects Button",
             "placeholder": "",
             "select": null,
             "allowTargetBlank": true,
@@ -62,11 +62,19 @@
             "repeat": false
           }
         },
-        "project_label": {
+        "projects_label": {
           "type": "Text",
           "config": {
-            "label": "Project Label",
+            "label": "Projects Label",
             "placeholder": ""
+          }
+        },
+        "portrait": {
+          "type": "Image",
+          "config": {
+            "label": "Portrait",
+            "constraint": {},
+            "thumbnails": []
           }
         }
       },
