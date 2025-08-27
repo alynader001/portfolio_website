@@ -12,7 +12,7 @@ import { createClient } from "@/prismicio";
 export type ContentIndexProps = SliceComponentProps<Content.ContentIndexSlice>;
 
 /**
- * Component for "ContentIndex" Slices.
+ * Component for "ContentIndex" Slices..
  */
 const ContentIndex: FC<ContentIndexProps> = async ({ slice }) => {
   const client = createClient();
