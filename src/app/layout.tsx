@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Aly N. Ahmed",
   description: "Aly N. Ahmed's personal portfolio",
   icons:{
-    icon:"favicon.png"
+    icon:"/favicon.png"
   }
 };
 
