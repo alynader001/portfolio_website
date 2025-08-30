@@ -13,10 +13,10 @@ export default async function Footer() {
   const settings = await client.getSingle("settings");
   return (
     <Bounded as="footer" className="text-slate-600">
-      <Heading as="h2" size="lg">
+      <Heading as="h2" size="sm">
         {"Contact"}
       </Heading>
-      <div className="mb-24 ml-6 mt-4 max-w-prose md:ml-12 flex text-xl font-bold flex-col gap-2">
+      <div className="mb-10 mt-4 max-w-prose flex text-md font-bold flex-col gap-2">
         <PrismicNextLink
         field={settings.data.cta_link}
         className="text-slate-300"
