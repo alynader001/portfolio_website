@@ -12,7 +12,12 @@ const urbanist = Urbanist({
 
 export const metadata: Metadata = {
   title: "Aly N. Ahmed",
-  description: "Aly N. Ahmed's personal portfolio"
+  description: "Aly N. Ahmed's personal portfolio",
+  icons: {
+    icon: [
+      { url: "/apple-icon.png", sizes: "any" }
+    ]
+  }
 };
 
 export default function RootLayout({
