@@ -337,6 +337,17 @@ interface ProjectPageDocumentData {
   hover_image: prismic.ImageField<never>;
 
   /**
+   * Order field in *Project*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_page.order
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  order: prismic.NumberField;
+
+  /**
    * Slice Zone field in *Project*
    *
    * - **Field Type**: Slice Zone

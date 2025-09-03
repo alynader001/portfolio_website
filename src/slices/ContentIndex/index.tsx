@@ -17,7 +17,16 @@ export type ContentIndexProps = SliceComponentProps<Content.ContentIndexSlice>;
 const ContentIndex: FC<ContentIndexProps> = async ({ slice }) => {
   const client = createClient();
   const blogPosts = await client.getAllByType("blog_post");
-  const projects = await client.getAllByType("project_page");
+  const projects = await client.getAllByType("project_page",
+    {
+      orderings: [
+        {
+          field: 'my.project_page.order',
+          direction: 'asc'
+        }
+      ]
+    }
+  );
 
   const contentType = slice.primary.content_type;
   if(!contentType) return null;
