@@ -233,6 +233,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | WeatherBalloonSlice
   | ContactSlice
   | ExperienceSlice
   | ContentIndexSlice
@@ -297,7 +298,10 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-type ProjectPageDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
+type ProjectPageDocumentDataSlicesSlice =
+  | ButtonLinkSlice
+  | ImageBlockSlice
+  | TextBlockSlice;
 
 /**
  * Content for Project documents
@@ -730,6 +734,67 @@ type BiographySliceVariation = BiographySliceDefault;
 export type BiographySlice = prismic.SharedSlice<
   "biography",
   BiographySliceVariation
+>;
+
+/**
+ * Primary content in *ButtonLink → Default → Primary*
+ */
+export interface ButtonLinkSliceDefaultPrimary {
+  /**
+   * Button Link field in *ButtonLink → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button_link.default.primary.linkbutton
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  linkbutton: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Button Label field in *ButtonLink → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: button_link.default.primary.linklabel
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  linklabel: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ButtonLink Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ButtonLinkSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ButtonLinkSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ButtonLink*
+ */
+type ButtonLinkSliceVariation = ButtonLinkSliceDefault;
+
+/**
+ * ButtonLink Shared Slice
+ *
+ * - **API ID**: `button_link`
+ * - **Description**: ButtonLink
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ButtonLinkSlice = prismic.SharedSlice<
+  "button_link",
+  ButtonLinkSliceVariation
 >;
 
 /**
@@ -1214,6 +1279,36 @@ export type TextBlockSlice = prismic.SharedSlice<
   TextBlockSliceVariation
 >;
 
+/**
+ * Default variation for WeatherBalloon Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type WeatherBalloonSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *WeatherBalloon*
+ */
+type WeatherBalloonSliceVariation = WeatherBalloonSliceDefault;
+
+/**
+ * WeatherBalloon Shared Slice
+ *
+ * - **API ID**: `weather_balloon`
+ * - **Description**: WeatherBalloon
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type WeatherBalloonSlice = prismic.SharedSlice<
+  "weather_balloon",
+  WeatherBalloonSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1255,6 +1350,10 @@ declare module "@prismicio/client" {
       BiographySliceDefaultPrimary,
       BiographySliceVariation,
       BiographySliceDefault,
+      ButtonLinkSlice,
+      ButtonLinkSliceDefaultPrimary,
+      ButtonLinkSliceVariation,
+      ButtonLinkSliceDefault,
       ContactSlice,
       ContactSliceDefaultPrimary,
       ContactSliceVariation,
@@ -1280,6 +1379,9 @@ declare module "@prismicio/client" {
       TextBlockSliceDefaultPrimary,
       TextBlockSliceVariation,
       TextBlockSliceDefault,
+      WeatherBalloonSlice,
+      WeatherBalloonSliceVariation,
+      WeatherBalloonSliceDefault,
     };
   }
 }

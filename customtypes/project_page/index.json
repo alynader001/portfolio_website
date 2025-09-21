@@ -46,6 +46,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "button_link": {
+              "type": "SharedSlice"
+            },
             "image_block": {
               "type": "SharedSlice"
             },

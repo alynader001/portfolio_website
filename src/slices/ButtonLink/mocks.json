@@ -1,0 +1,23 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"linkbutton": {
+				"key": "a86dea34-6cf8-47de-8512-37dd4fca3c59",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "potatoes"
+				}
+			},
+			"linklabel": {
+				"__TYPE__": "FieldContent",
+				"value": "art",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
