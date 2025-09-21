@@ -39,6 +39,7 @@ export default function WeatherBalloonInfo() {
     }
 
     async function fetchTimezone() {
+      if (!selected) return;
       const [lat, lon] = selected;
       setLoadingTime(true);
 
