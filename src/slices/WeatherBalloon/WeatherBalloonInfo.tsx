@@ -31,31 +31,57 @@ export default function WeatherBalloonInfo() {
     fetchBalloons();
   }, []);
 
-  // Fetch timezone info whenever a balloon is selected
   useEffect(() => {
     if (!selected) {
       setTimezoneInfo(null);
       return;
     }
 
-    async function fetchTimezone() {
-      if (!selected) return;
-      const [lat, lon] = selected;
-      setLoadingTime(true);
+    const [lat, lon] = selected;
+    let isCurrent = true; // flag to track stale requests
+    setLoadingTime(true);
 
+    async function fetchTimezone() {
       try {
         const res = await fetch(`/api/timezone?lat=${lat}&lon=${lon}`);
-        const data: TimezoneInfo = await res.json();
-        setTimezoneInfo(data);
+
+        const data: Partial<TimezoneInfo> = await res.json();
+
+        // Validate data before updating state
+        if (!isCurrent) return; // ignore stale responses
+
+        if (data.formatted && data.zoneName) {
+          setTimezoneInfo(data as TimezoneInfo);
+        } else {
+          // API returned incomplete data
+          setTimezoneInfo({
+            formatted: "N/A",
+            zoneName: "N/A",
+            abbreviation: "N/A",
+            gmtOffset: 0,
+          });
+        }
       } catch (err) {
         console.error("Failed to fetch timezone info:", err);
-        setTimezoneInfo(null);
+        if (isCurrent) {
+          setTimezoneInfo({
+            formatted: "N/A",
+            zoneName: "N/A",
+            abbreviation: "N/A",
+            gmtOffset: 0,
+          });
+        }
       } finally {
-        setLoadingTime(false);
+        if (isCurrent) setLoadingTime(false);
       }
     }
 
     fetchTimezone();
+
+    return () => {
+      // Mark this request as stale if selected changes
+      isCurrent = false;
+    };
   }, [selected]);
 
   return (
