@@ -1,11 +1,12 @@
 import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from "next";
-import { Urbanist } from "next/font/google";
+import { Saira } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BackgroundStars from "@/components/BackgroundStars";
 
-const urbanist = Urbanist({
+const saira = Saira({
   subsets: ["latin"],
 });
 
@@ -26,10 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-slate-700 text-slate-100">
+    <html lang="en" className="text-slate-100">
       <body
-        className={urbanist.className}
+        className={saira.className}
       >
+        <BackgroundStars/>
         <Header/>
         {children}
         <Footer/>

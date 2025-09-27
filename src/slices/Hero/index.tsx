@@ -2,9 +2,8 @@ import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import Bounded from "@/components/Bounded";
-import Shapes from "./Shapes"
 import Button from "@/components/Button";
-import { PrismicNextImage } from "@prismicio/next";
+import Background3D from "./Background3D";
 /**
  * Props for `Hero`.
  */
@@ -15,16 +14,13 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero: FC<HeroProps> = ({ slice }) => {
   return (
+    <>
+    <Background3D/>
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-        <PrismicNextImage
-        field={slice.primary.portrait}
-        className="col-start-1 md:col-start-2 md:row-start-1"
-        >
-        </PrismicNextImage>
         <div className="col-start-1 md:row-start-1">
           <h1 className="mb-8 text-[clamp(3rem,15vmin,20rem)] font-extrabold leading-none
             tracking-tighter" aria-label={
@@ -41,6 +37,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
         </div>
       </div>
     </Bounded>
+    </>
   );
 };
 
