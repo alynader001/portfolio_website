@@ -6,7 +6,7 @@ import * as THREE from "three";
 import { RefObject } from "react";
 
 type HexagonalGridProps = {
-  gridRef?: RefObject<THREE.Group>;
+  gridRef?: RefObject<THREE.Group | null>;
 };
 
 function HexagonalGrid({ gridRef }: HexagonalGridProps) {
