@@ -58,7 +58,7 @@ function HexagonalGrid({ gridRef }: HexagonalGridProps) {
 }
 
 function Scene() {
-  const gridRef = useRef<THREE.Line | null>(null);
+  const gridRef = useRef<THREE.Group | null>(null)
   const particlesRef = useRef<THREE.Points | null>(null);
   const mousePosition = useRef({ x: 0, y: 0 });
   const targetRotation = useRef({ x: 0, y: 0, z: 0 });
