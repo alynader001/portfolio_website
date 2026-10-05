@@ -1,0 +1,29 @@
+export const metadata = {
+  title: "Franka Emika Panda Articulation Estimation",
+  date: "2025-08-22",
+  tags: ["Robotics"],
+  order: 2,
+  metaTitle: "Articulation Estimation",
+  summary: "Factor-graph articulation estimation ported to ROS2 on a Franka Emika Panda, with a joint impedance controller that lets the robot safely explore unknown objects.",
+  image: "/images/projects/articulation-estimation/cover.jpeg",
+};
+
+<TextBlock>
+
+<VideoEmbed src="https://player.vimeo.com/video/1114765283" title="IMG_1280 2" />
+
+This project is from my work at the [RIPL Lab](https://www.ripl-lab.com).
+
+It is based on this [research](https://arxiv.org/pdf/2309.16343) by Dr Russell Buchanan which concerns the articulation estimation for joints of objects using Factor Graphs, based on the GTSAM library.
+
+In this project, I make the Franka Emika Panda perform articulation estimations by porting the original code for this project from ROS1 to ROS2. Additionally, I implemented a joint impedance controller on the Franka Emika Panda. This gave the robot compliance, allowing for it to explore objects of various joint types. Without prior knowledge of how the object being interacted with it is articulatied, the joint impedance controller allows for the robot to move along with whatever object it is exploring.
+
+As part of my work for this project, I also developed a time-optimal trajectory execution strategy. This gave the joint impedance controller the ability to receive trajectories containing the time information on when each phase of the trajectory should be completed. My addition allowed for the joint impedance controller to execute each phase of the trajectory at the correct time.
+
+All in all, the video shows the final results of the project, with the robot accurately estimating the joint type and position of an articulated object as can be seen in the video above.
+
+Here is also a demonstration of the joint impedance controller
+
+<VideoEmbed src="https://player.vimeo.com/video/1117164376" title="IMG_1284" />
+
+</TextBlock>

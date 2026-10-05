@@ -3,7 +3,7 @@ import Bounded from "@/components/Bounded";
 import ThermalLeakDetector from "@/components/thermal-leak-detector/ThermalLeakDetector";
 
 export const metadata: Metadata = {
-  title: "Thermal Leak Detector | Aly N. Ahmed",
+  title: "Thermal Leak Detector | Aly Ahmed",
   description: "Classical computer vision demo for detecting warm thermal seams around doors and windows.",
 };
 

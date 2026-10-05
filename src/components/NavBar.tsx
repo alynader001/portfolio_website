@@ -2,38 +2,24 @@
 
 import clsx from "clsx";
 import React, { useState } from "react";
-import { Content, ImageField, KeyTextField, asLink } from "@prismicio/client";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import Link from "next/link";
+import Image from "next/image";
 import { MdMenu, MdClose } from "react-icons/md";
-import Button from "./Button";
 import { usePathname } from "next/navigation";
+import { site } from "@/content/site";
+import SiteLink from "./SiteLink";
+import SocialLinks from "./SocialLinks";
 
-export default function NavBar({
-  settings,
-}: {
-  settings: Content.SettingsDocument;
-}) {
+export default function NavBar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   return (
-    <>
-    <style jsx global>{`
-      @media (min-width: 768px) {
-        header {
-          position: static !important;
-        }
-      }
-    `}</style>
     <nav aria-label="Main navigation" className="md:-mx-4">
-      <ul className="flex flex-col justify-between rounded-b-lg bg-slate-50 px-4 py-2 md:m-4 md:flex-row md:items-center md:rounded-xl">
+      <div className="flex flex-col justify-between rounded-b-lg bg-slate-50 px-4 py-2 md:m-4 md:flex-row md:items-center md:rounded-xl">
         <div className="flex items-center justify-between">
-          <NameLogo
-          name={settings.data.name}
-          logo={settings.data.logo}
-          />
+          <NameLogo />
           <button
+            type="button"
             aria-expanded={open}
             aria-label="Open menu"
             className="block p-2 text-2xl text-slate-800 md:hidden"
@@ -44,11 +30,12 @@ export default function NavBar({
         </div>
         <div
           className={clsx(
-            "fixed bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-end gap-4 bg-slate-50 pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden",
+            "fixed bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-end bg-slate-50 pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden",
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
           <button
+            type="button"
             aria-label="Close menu"
             aria-expanded={open}
             className="fixed right-4 top-3 block p-2 text-2xl text-slate-800 md:hidden "
@@ -56,138 +43,95 @@ export default function NavBar({
           >
             <MdClose />
           </button>
-          {settings.data.nav_item.map(({ link, label }, index) => (
-            <React.Fragment key={label}>
-              <li className="first:mt-8">
-                <PrismicNextLink
+          <ul className="flex flex-col items-end gap-4">
+            {site.nav.map(({ href, label, activePrefix }) => (
+              <li key={label}>
+                <SiteLink
                   className={clsx(
                     "group relative block overflow-hidden rounded px-3 text-3xl font-bold text-slate-900 ",
                   )}
-                  field={link}
+                  href={href}
                   onClick={() => setOpen(false)}
-                  aria-current={
-                    pathname.includes(asLink(link) as string)
-                      ? "page"
-                      : undefined
-                  }
+                  aria-current={pathname.startsWith(activePrefix) ? "page" : undefined}
                 >
                   <span
                     className={clsx(
-                      "absolute inset-0 z-0 h-full translate-y-12 rounded bg-green-600 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
-                      pathname.includes(asLink(link) as string)
+                      "absolute inset-0 z-0 h-full rounded bg-green-600 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
+                      pathname.startsWith(activePrefix)
                         ? "translate-y-6"
                         : "translate-y-18",
                     )}
                   />
                   <span className="relative">{label}</span>
-                </PrismicNextLink>
+                </SiteLink>
               </li>
-              {index < settings.data.nav_item.length - 1 && (
-                <span
-                  className="hidden text-4xl font-thin leading-[0] text-slate-400 md:inline"
-                  aria-hidden="true"
-                >
-                  /
-                </span>
-              )}
-            </React.Fragment>
-          ))}
-          <li>
-            <Button
-              linkField={settings.data.resume_link}
-              label={settings.data.resume_label}
-              className="ml-3 text-black"
-            />
-          </li>
-          <li>
-            <Button
-              linkField={settings.data.cta_link}
-              label={"email"}
-              className="ml-3 text-black"
-            />
-          </li>
+            ))}
+            <li className="mt-4">
+              <SocialLinks variant="nav" />
+            </li>
+          </ul>
         </div>
-        <DesktopMenu settings={settings} pathname={pathname} />
-      </ul>
+        <DesktopMenu pathname={pathname} />
+      </div>
     </nav>
-    </>
   );
 }
 
-function NameLogo({ name, logo }: { name: KeyTextField, logo?:ImageField<never>}) {
+function NameLogo() {
   return (
-    <Link
+    <SiteLink
       href="/"
       aria-label="Home page"
       className="flex items-center gap-2 text-xl font-extrabold tracking-tighter text-slate-900"
     >
-      {logo && (
-        <PrismicNextImage
-          field={logo}
-          className="h-8 w-auto"
-          />
-        )}
-      {name && <span>{name}</span>}
-    </Link>
+      <Image
+        {...site.logo}
+        alt=""
+        sizes="32px"
+        className="h-8 w-auto"
+      />
+      <span>{site.name}</span>
+    </SiteLink>
   );
 }
 
-function DesktopMenu({
-  settings,
-  pathname,
-}: {
-  settings: Content.SettingsDocument;
-  pathname: string;
-}) {
+function DesktopMenu({ pathname }: { pathname: string }) {
   return (
-    <div className="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
-      {settings.data.nav_item.map(({ link, label }, index) => (
+    <ul className="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
+      {site.nav.map(({ href, label, activePrefix }, index) => (
         <React.Fragment key={label}>
           <li>
-            <PrismicNextLink
+            <SiteLink
               className={clsx(
                 "group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900",
               )}
-              field={link}
-              aria-current={
-                pathname.includes(asLink(link) as string) ? "page" : undefined
-              }
+              href={href}
+              aria-current={pathname.startsWith(activePrefix) ? "page" : undefined}
             >
               <span
                 className={clsx(
                   "absolute inset-0 z-0 h-full rounded bg-green-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0",
-                  pathname.includes(asLink(link) as string)
+                  pathname.startsWith(activePrefix)
                     ? "translate-y-6"
                     : "translate-y-8",
                 )}
               />
               <span className="relative">{label}</span>
-            </PrismicNextLink>
+            </SiteLink>
           </li>
-          {index < settings.data.nav_item.length - 1 && (
-            <span
-              className="hidden text-4xl font-thin leading-[0] text-slate-400 md:inline"
+          {index < site.nav.length - 1 && (
+            <li
+              className="text-4xl font-thin leading-[0] text-slate-400"
               aria-hidden="true"
             >
               /
-            </span>
+            </li>
           )}
         </React.Fragment>
       ))}
-      <li>
-        <Button
-          linkField={settings.data.resume_link}
-          label={settings.data.resume_label}
-          className="ml-3 text-black"
-        />
+      <li className="ml-4">
+        <SocialLinks variant="nav" />
       </li>
-      <li>
-        <Button
-          linkField={settings.data.cta_link}
-          label={"email"}
-          className="ml-3 text-black"
-        />
-      </li>
-    </div>
+    </ul>
   );
 }

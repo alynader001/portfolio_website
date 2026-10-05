@@ -2,6 +2,7 @@
 
 import { Canvas } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import * as THREE from "three";
 
 function Scene() {
@@ -36,6 +37,11 @@ function Scene() {
 }
 
 const BackgroundStars = () => {
+  const pathname = usePathname();
+
+  // The homepage Hero renders its own opaque Background3D, which would cover these stars
+  if (pathname === "/") return null;
+
   return (
     <div style={{ 
       position: 'fixed',
@@ -46,9 +52,7 @@ const BackgroundStars = () => {
       zIndex: -1,
       background: '#0d0d0d'
     }}>
-      {/* Give Canvas a random key so React always remounts -> new stars */}
       <Canvas
-        key={Math.random()}
         camera={{ position: [0, 2, 5], rotation: [-0.5, 0, 0], fov: 75 }}
       >
         <Scene />

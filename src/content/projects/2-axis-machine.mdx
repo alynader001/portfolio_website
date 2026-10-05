@@ -1,0 +1,19 @@
+export const metadata = {
+  title: "2-Axis Machine",
+  date: "2025-04-05",
+  tags: ["Firmware"],
+  order: 6,
+  metaTitle: "2 Axis Machine",
+  summary: "Bare-metal STM32 drivers for a 2-axis machine: ADC, interrupts, and GPIO for speed and direction control, with safety limit switches.",
+  image: "/images/projects/2-axis-machine/img_0569.jpg",
+};
+
+<TextBlock>
+
+<Image src="/images/projects/2-axis-machine/img_0569.jpg" alt="2 axis machine" width={4032} height={3024} />
+
+This project was with the aim of developing low level drivers for the safe control of a 2-axis machine. The firmware ran on bare metal. The ADC, EXTI interrupts, and GPIO where used to perform speed and direction control, as well as implement safety limit switches which prevented the machine from surpassing its bounds.
+
+This was implemented on STM32 and the entire code can be found [here](https://github.com/alynader001/Two-Axis-Machine)
+
+</TextBlock>

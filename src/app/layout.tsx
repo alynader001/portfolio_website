@@ -12,8 +12,9 @@ const saira = Saira({
 
 
 export const metadata: Metadata = {
-  title: "Aly N. Ahmed",
-  description: "Aly N. Ahmed's personal portfolio",
+  metadataBase: new URL("https://www.alynader.com"),
+  title: "Aly Ahmed",
+  description: "Aly Ahmed's personal portfolio",
   icons: {
     icon: [
       { url: "/apple-icon.png", sizes: "any" }
@@ -27,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="text-slate-100">
+    <html lang="en" className="scroll-smooth text-slate-100" data-scroll-behavior="smooth">
       <body
         className={saira.className}
       >

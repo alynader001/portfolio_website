@@ -1,0 +1,26 @@
+<TextBlock>
+
+I was a key part of a small team that built a robot from scratch, and over eight months I worked on almost every layer of its software, plus a fair amount of its hardware. We iterated constantly: every round of testing turned up new problems, and the software evolved week to week to solve them. By the end, the robot was being deployed in front of real customers across the U.S. and generating a lot of interest.
+
+## Control
+
+- **Low-level control libraries.** I wrote C++/Python and ROS2 libraries for the robot's QDD actuators over SocketCAN, which the rest of the arm's control was built on.
+- **PID tuning with Bayesian optimization.** Instead of hand-tuning gains, I built a tuner that uses Bayesian optimization (Optuna) to search for PID parameters automatically.
+- **Teleoperation.** I built teleoperation over UDP and TCP/IP, which we also used to collect multi-modal data for training vision-language-action (VLA) models.
+
+## Vision and calibration
+
+- **Vision-to-placement pipeline.** Maps 2D image coordinates to 3D points using RGB-D depth and colour data, so the robot can act on what the camera sees.
+- **Camera-to-robot calibration.** A calibration routine using ChArUco boards to find where the camera sits relative to the robot.
+- **Vision tracking.** Tracking objects so the robot can respond to what's happening in front of it.
+
+## Testing and hardware
+
+- **Stress testing.** I ran the robot through a range of tasks and conditions to see how it performed in the real world, and fed what broke back into the software.
+- **Mechanical assembly and wiring.** I assembled robotic arms and control boxes, including soldering, crimping, and wiring the emergency stop.
+
+## Research
+
+When we hit hard problems, I read research papers to learn how others had solved them, and brought those ideas back to help shape the team's technical direction.
+
+</TextBlock>

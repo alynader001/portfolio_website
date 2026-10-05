@@ -21,7 +21,6 @@ export default function ThermalLeakDetector() {
   const [minScore, setMinScore] = useState(0.48);
   const [maxDetections, setMaxDetections] = useState(10);
   const [ignoreUi, setIgnoreUi] = useState(true);
-  const [isProcessing, setIsProcessing] = useState(false);
 
   const strongestScore = useMemo(() => detections[0]?.score ?? 0, [detections]);
 
@@ -40,7 +39,6 @@ export default function ThermalLeakDetector() {
 
     const img = new Image();
     img.onload = () => {
-      setIsProcessing(true);
       const maxWidth = 1100;
       const scale = Math.min(1, maxWidth / img.naturalWidth);
       const width = Math.round(img.naturalWidth * scale);
@@ -63,7 +61,6 @@ export default function ThermalLeakDetector() {
       overlayContext.drawImage(sourceCanvas, 0, 0);
       drawOverlay(overlayContext, result.detections);
       setDetections(result.detections);
-      setIsProcessing(false);
     };
     img.src = image.url;
   }, [image, ignoreUi, maxDetections, minScore]);
@@ -195,7 +192,6 @@ export default function ThermalLeakDetector() {
                 {image.fileName} · {image.width} x {image.height}
               </p>
             )}
-            {isProcessing && <p className="mt-4 text-sm text-cyan-200">Processing image...</p>}
           </div>
 
           {detections.length > 0 && (

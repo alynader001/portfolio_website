@@ -1,27 +1,27 @@
 import { type Metadata } from "next";
-import { notFound } from "next/navigation";
-import { asImageSrc } from "@prismicio/client";
-import { SliceZone } from "@prismicio/react";
 
-import { createClient } from "@/prismicio";
-import { components } from "@/slices";
+import Hero from "@/components/Hero";
+import ExperienceList from "@/components/ExperienceList";
+import ProjectsSection from "@/components/ProjectsSection";
+import Skills from "@/components/Skills";
+import { hero, skills } from "@/content/site";
+import { jobs } from "@/content/experience";
+import { getEntries } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Aly Ahmed | Mechatronics Engineer",
+  description: hero.intro,
+};
 
 export default async function Page() {
-  const client = createClient();
-  const page = await client.getSingle("homepage").catch(() => notFound());
+  const projects = await getEntries("projects");
 
-  return <SliceZone slices={page.data.slices} components={components} />;
-}
-
-export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient();
-  const page = await client.getSingle("homepage").catch(() => notFound());
-
-  return {
-    title: page.data.meta_title,
-    description: page.data.meta_description,
-    openGraph: {
-      images: [{ url: asImageSrc(page.data.meta_image) ?? "" }],
-    },
-  };
+  return (
+    <>
+      <Hero {...hero} />
+      <ExperienceList jobs={jobs} />
+      <ProjectsSection projects={projects} />
+      <Skills skills={skills} />
+    </>
+  );
 }

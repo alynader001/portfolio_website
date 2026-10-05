@@ -1,0 +1,18 @@
+export const metadata = {
+  title: "Ball Balancing Platform",
+  date: "2025-09-09",
+  tags: ["Robotics", "Controls"],
+  order: 5,
+  summary: "In progress: a 3-DOF platform that tracks a ball with OpenCV and tilts to steer it, combining PID control with inverse kinematics.",
+  image: "/images/projects/ball_balancing_platform/screenshot2025-09-09at11.55.58am.png",
+};
+
+<TextBlock>
+
+<Image src="/images/projects/ball_balancing_platform/screenshot2025-09-09at11.55.58am.png" alt="" width={564} height={418} />
+
+I am currently working on creating a 3-dof ball balancing robot. This robot will utilize computer vision to track the balls location, and through control of three motors, tilt the platform to place the ball in the desired location. The balls location will be tracked with openCV, a PID loop will be used to determine the appropriate response magnitude to reach the desired location, and inverse kinematics will be utilized, to map the desired response from cartesian space to joint space, meaning, figuring out the desired position for each motor to achieve the desired surface tilt that will cause the ball to move towards the target location. This will also allow control of the magnitude of tilt to vary the speed of the balls approach to the target location.
+
+\* In Progress
+
+</TextBlock>

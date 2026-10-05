@@ -1,0 +1,89 @@
+export const metadata = {
+  title: "Self Balancing Robot",
+  date: "2025-08-25",
+  tags: ["Robotics", "Electronics", "Controls", "Mechanical Design"],
+  order: 1,
+  metaTitle: "Self Balancing Robot",
+  summary: "Two-wheeled inverted-pendulum robot: ESP32 firmware on FreeRTOS, an IMU over SPI, and PID balance control tuned live over Bluetooth.",
+  image: "/images/projects/self-balancing-robot/img_1341.jpg",
+};
+
+<TextBlock>
+
+<Image src="/images/projects/self-balancing-robot/a4mn6l.gif" alt="" width={250} height={459} />
+
+<Image src="/images/projects/self-balancing-robot/img_1341.jpg" alt="" width={2814} height={3422} />
+
+## Software
+
+[Code](https://github.com/alynader001/self_balancing_robot/blob/main/self_balancing_robot.ino)
+
+## Electronics
+
+- ESP-wroom-32 Dev Board
+- BNO085 IMU
+- 2 FIT0186 Brushed DC Motors
+- 3S Li-Po battery
+- [12V Buck-Boost Converter with Voltage monitor Module](https://www.amazon.ca/dp/B07QNQDXH4?ref=cm_sw_r_apin_dp_28XKZE6H32VSB04S05NE&ref_=cm_sw_r_apin_dp_28XKZE6H32VSB04S05NE&social_share=cm_sw_r_apin_dp_28XKZE6H32VSB04S05NE)
+
+<Image src="/images/projects/self-balancing-robot/img_1339.jpg" alt="" width={2345} height={1924} />
+
+<Image src="/images/projects/self-balancing-robot/img_1340.jpg" alt="" width={2982} height={2201} />
+
+- 2 BTS7960 35A H-Bridge DC motor drivers
+- N7803-1PH 3.3V Buck Converter
+- XT-60 Connectors
+- [Electrical switch](https://www.amazon.ca/gp/product/B07Y1GDRQG/ref=ewc_pr_img_3?smid=A1EADFPRWB560F&psc=1)
+
+## Mechanical Parts
+
+- 3D printed wheels and chassis designed in SolidWorks and printed on a Bambu Lab printer
+
+<Image src="/images/projects/self-balancing-robot/chasis.png" alt="" width={2032} height={1085} />
+
+<Image src="/images/projects/self-balancing-robot/wheel.png" alt="" width={1345} height={1167} />
+
+- A 3D printed screw-hole IMU mount for stability
+
+<Image src="/images/projects/self-balancing-robot/imu_mount.png" alt="" width={1593} height={1006} />
+
+- Screw hole mounts for mounting the motors
+
+<Image src="/images/projects/self-balancing-robot/chasis_img_2.png" alt="" width={1472} height={1131} />
+
+- Top extension pieces for raising the centre of gravity for easier stability
+- [Flange Shaft Couplings](https://www.amazon.ca/gp/product/B0F13HSN3K/ref=ewc_pr_img_1?smid=AMA4YA91DDNX9&th=1) for strong wheel connections
+
+<Image src="/images/projects/self-balancing-robot/img_1346.jpg" alt="" width={4032} height={3024} />
+
+## Firmware + Hardware Technical Details
+
+- The BNO085 IMU communicates with the ESP-wroom-32 chip via the SPI communication protocol. A driver was created allowing for the connection.
+- Bluetooth communication was also established to allow for real-time adjustment of gain factors
+- Multi-threading, possible via the use of FreeRTOS
+- A 4x quadrature encoder state machine which runs on separate threads allowing us to obtain odometry information
+- The 3.3v Buck converter provides power to the microcontroller and IMU, and powers the logic of the motor controllers
+
+## Control Theory
+
+This Self balancing robot was made based on the inverse pendulum theory. Taking advantage of the IMUs internal sensor fusion, a quaternion is obtained, which is then converted to the Euler angles, yaw, pitch, and roll.
+
+In the case of this robot, pitch aligned with the rotation axis of the robot. For self-balancing, the goal was to keep the pitch angle at 0 degrees.
+
+### How this is achieved
+
+Whatever direction the robot is falling towards, its motors must drive it towards that direction. This is because the goal is to keep the robot’s centre of mass, at the centre of the robot. This can be visualized is the robot ‘chasing’ its own centre of mass.
+
+In order to maintain the pitch at exactly 0 degrees, the direction the robot is falling is determined, and based on that, the direction in which to drive the robot is determined. The speed at which the motors will drive the robot is then determined through a PID loop.
+
+### PID
+
+Our error can be defined as the target angle subtracted by the current pitch angle. The goal is to reduce the error as much as possible by responding to the error in three separate way, the *proportional*, *derivative*, and *integral* responses
+
+Proportional: The proportional response is a response that is proportional to the error, multiplied by the proportional gain factor.
+
+Derivative: The derivative term, is based on the rate of change, or the velocity of the error. The derivative term plays a role both when the velocity of error is increasing and when it is decreasing. It opposes the rapid changes in error, creating a damping effect. Although it does not directly remove steady state error, it creates a smoothing effect, which is crucial for the self-balancing robot.
+
+Integral: The integral term corrects for steady state error. It increases in magnitude the longer the system remains in error. It is therefore very useful for correcting small errors that the P term fails to correct
+
+</TextBlock>
