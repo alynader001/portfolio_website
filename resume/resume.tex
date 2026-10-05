@@ -1,0 +1,261 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[11pt, letterpaper]{article}
+
+% Load geometry package with custom paper size
+%\usepackage[paperwidth=8.5in, paperheight=11.5in, margin=1in]{geometry}
+
+\usepackage[normalem]{ulem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{fontawesome}
+\input{glyphtounicode}
+\definecolor{egyptianBlue}{rgb}{0.0,0.0,0.5}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+\newcommand{\resumeSubItem}[1]{
+  \begin{itemize}
+    \item\small{#1 \vspace{-2pt}}
+  \end{itemize}
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textcolor{egyptianBlue}{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      #1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape Aly Ahmed} \\ \vspace{1pt}
+    \href{mailto:anwaahme@uwaterloo.ca}{\textcolor{egyptianBlue}{anwaahme@uwaterloo.ca}} $|$
+    \small\href{https://alynader.com}{\textcolor{egyptianBlue}{alynader.com}} 
+    %\href{tel:6137126646}{\textcolor{egyptianBlue}{(613) 712-6646}} $|$ 
+    %$|$
+    %{\textcolor{egyptianBlue}{linkedin.com/in/aly-nwa-ahmed}}
+    %\href{https://linkedin.com/in/aly-nwa-ahmed}{\textcolor{egyptianBlue}{\faLinkedin}} $|$
+    %\href{https://github.com/alynader001}{\textcolor{egyptianBlue}{\faGithub}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Waterloo}{Waterloo, ON}
+      {\textcolor{black}{Bachelor of Applied Science, Mechatronics Engineering, Honours, Artificial Intelligence Option}}{Apr 2027}
+      \resumeItemListStart
+      \resumeItem{Relevant Courses}
+        \resumeSubItem{MTE544 Autonomous Mobile Robots, ECE457B Fundamentals of Computational Intelligence, MTE484 Control Applications, MTE241 Introduction to Computer Structures and Real-Time Systems, MTE325  Microprocessor Systems and Interfacing for Mechatronics Engineering}
+        \resumeItemListEnd
+  \resumeSubHeadingListEnd
+ 
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+%% Red Rabbit Robotics
+    \resumeSubheading
+      {Robotics Software Engineer}{Burnaby, BC}
+      {\href{https://www.redrabbitrobotics.ai}{\textcolor{egyptianBlue}{Red Rabbit Robotics }}}{Jan 2026 - Aug 2026}
+      \resumeItemListStart
+        \resumeItem{Contributed core software across an entire robot platform built from scratch, including motion primitives, teleoperation, vision software, motor controllers, and calibration tools.}
+        \resumeSubItem{Engineered a C++/Python and ROS2 SDK for QDD actuators using SocketCAN to enable arm control}
+        \resumeSubItem{Developed a full vision-to-placement pipeline that maps 2D image coordinates to 3D points using Orbbec RGBD depth and colour data  and developed a camera-to-robot calibration routine via ChArUco boards.}
+        %%\resumeSubItem{Implemented real-time object tracking for dynamic environments using the Lucas-Kanade optical flow algorithm.}
+        \resumeSubItem{Collaborated on the development of functionality that enable multi-modal data collection pipeline, and executed many teleoperation sessions to capture data for VLA models.}
+        \resumeSubItem{Created a custom robotic arm  PID tuner using Bayesian Optimization and the Optuna library}
+        \resumeItem{Contributed to software architecture discussions and helped make key decisions.}
+        \resumeItem{Stress-tested robots on various tasks to evaluate real-world performance and provide feedback on any issues.}
+        \resumeItem{Conducted performance benchmarking on hardware running inference, camera streaming, and control algorithms to select optimal hardware platform for the robot.}
+        \resumeItem{Conducted deep-dive research and read papers to contribute to formulating the engineering team's direction.}
+        \resumeItem{Performed mechanical assembly and electrical wiring, soldering, and crimping for robotic arms and control boxes.}
+      \resumeItemListEnd
+%% RIPL LAB
+    \resumeSubheading
+      {Robotics Perception and Control R\&D}{Waterloo, ON}
+      {\href{https://www.ripl-lab.com/home}{\textcolor{egyptianBlue}{Robotic Interaction, Perception and Learning lab -- University of Waterloo}}}{May 2025 -- August 2025}
+      \resumeItemListStart
+        \resumeItem{Designed a probabilistic estimation pipeline for modeling and predicting the motion of flexible objects to support robot manipulation, implemented with factor graphs (GTSAM), ROS2, and Eigen. (C++)}
+%        \resumeItem{Ongoing: Adding a deep learning step with measured forces as an input to enable joint location estimation}
+        \resumeItem{Implemented cartesian and joint impedance control with time-optimal trajectory tracking on the Franka Emika Panda, utilizing ROS2\_Control (C++, Python)}
+        %%\resumeItem{Ported an entire codebase from ROS to ROS2, enabling compatibility with a new robot(C++, cmake)}
+%        \resumeItem{Designed and built an aluminum test rig capable of mounting objects to perform tests for the project (SolidWorks)}
+
+      \resumeItemListEnd
+
+%% AIR LAB
+    \resumeSubheading
+      {Robotics Research Assistant}{Waterloo, ON}
+      {\href{https://uwaterloo.ca/active-and-interactive-robotics-lab/}{\textcolor{egyptianBlue}{Active \& Interactive Robotics Lab -- University of Waterloo }}}{Sep 2025 -- Dec 2025}
+      \resumeItemListStart
+        \resumeItem{Explored methods for implementing impedance control on the TIAGo Pro from Pal Robotics}
+      \resumeItemListEnd
+
+%% Ford
+    \resumeSubheading
+      {Platform Software Developer}{Kanata, ON}
+      {Ford Motor Company}{Sep 2024 -- Dec 2024}
+      \resumeItemListStart
+        \resumeItem{Executed embedded cryptography software improvements, successfully resolving 1000+ code issues and developed unit tests utilizing Google Test (C++) }
+      \resumeItemListEnd
+      
+%% Blackberry
+    \resumeSubheading
+      {Software Test Developer}{Kanata, ON}
+      {Blackberry QNX}{Jan 2024 -- Apr 2024}
+      \resumeItemListStart
+        \resumeItem{Developed automated tests, and performed manual tests on Qualcomm, Bosch, and NXP ECUs, running QNX, and android automotive, producing invaluable engineering data, facilitating successful OEM demos}
+        \resumeItem{Supported proof of concept demos to major BlackBerry customers like Nissan, and Ford through integration, development, and testing}
+    \resumeItemListEnd
+
+%% Audesse
+%    \resumeSubheading
+%      {Software Engineering Intern}{Kitchener, ON}
+%      {Audesse Automotive}{May 2023 -- Aug 2023}
+%      \resumeItemListStart
+%        \resumeItem{Developed an algorithm for decoding multiplexed CAN bus data using DBC files, creating a new product for use by Audesse customers (JavaScript)}
+%        \resumeItem{Developed a full-stack web-page with AWS DynamoDB integration, allowing customers to create custom JSON configuration files for their ECUs (JavaScript, HTML, CSS)}
+%        \resumeItem{Designed custom hand tools that allow for interfacing with Audesse ECUs (Onshape)}
+%      \resumeItemListEnd
+
+%% WARG
+%    \resumeSubheading
+%       {Electrical Engineer}{Waterloo, ON}
+%        {Waterloo Aerial Robotics Group}{Feb 2025 -- Present}
+%        \resumeItemListStart
+%            \resumeItem{Designed and STM-32-based CAN to UART adapter PCB , to bridge sensor data with the drone’s CAN bus (Altium)}
+%            \resumeItem{Assembled PCBs using Reflow Soldering and performed Wire Harnessing for a small airplane }
+%        \resumeItemListEnd
+  \resumeSubHeadingListEnd
+  
+%-----------PROGRAMMING SKILLS-----------
+\section{Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: C, C++, Python, Bash} \\
+     \textbf{Frameworks \& OS}{: ROS/ROS2, FreeRTOS, QNX, Linux, OpenCV, GTSAM} \\
+     \textbf{Tools \& Architecture}{: Git, Docker, AWS, Networking (TCP, UDP, CAN, SPI, I2C, UART)} \\
+     \textbf{Hardware \& CAD}{: Altium Designer, SolidWorks, Fusion 360, Oscilloscopes, Soldering, Wire Harnessing}
+    }}
+ \end{itemize}
+
+%-----------PROJECTS-----------
+%% LIDAR-based Autonomous Robot
+%\section{\href{https://www.alynader.com/projects}{Projects}}
+%    \resumeSubHeadingListStart
+
+%      \resumeProjectHeading
+%          {\href{https://github.com/alynader001/Lidar-Based-Autonomous-Robot/tree/main/src}{\textbf{LIDAR-based Autonomous Robot - Watanomous} $|$ \small{C++, ROS2, foxglove} \faLink }}{}
+%          \resumeItemListStart
+%            \resumeItem{Developed a ROS2 node for processing LIDAR data to update an occupancy grid for real-time environment perception (C++)}
+%            \resumeItem{Designed a ROS2 node, implementing A* path planning for robotic collision-free navigation}
+%      \resumeItemListEnd 
+%% Self Balancing Robot
+%      \resumeProjectHeading
+%          {\href{https://www.alynader.com/projects/self-balancing-robot}{\textbf{Self Balancing Robot} $|$ \small{C++, FreeRTOS, ESP-32, Bluetooth} \faLink}}{}
+%          \resumeItemListStart
+%            \resumeItem{Developed SPI driver integration between the BNO085 IMU and an esp-32 dev board, obtaining orientation data}
+%            \resumeItem{Implemented a PID control algorithm to regulate motor speed and direction using real-time rotation angle feedback from the IMU}
+%            \resumeItem{Developed a concurrent quadrature encoder state machine with FreeRTOS, enabling real-time motor odometry}
+%            \resumeItem{Created a bluetooth communication module to update PID controller parameters dynamically at runtime}
+%            \resumeItem{Designed and fabricated a custom robot chassis using 3D printing, reinforcing wheel mounts with metal components}
+%          \resumeItemListEnd
+          
+%    \resumeSubHeadingListEnd
+%-------------------------------------------
+\end{document}
