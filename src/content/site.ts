@@ -18,7 +18,7 @@ export const hero = {
   lastName: "Ahmed",
   tagLine: "Mechatronics Engineer",
   intro:
-    "Honours Mechatronics Engineering student with the AI option at the University of Waterloo. I have hands-on experience in robot control, vision, and perception, and I'm especially interested in modelling systems and turning those models into software that runs on real hardware.",
+    "Mechatronics Engineering student at the University of Waterloo with an option in Artificial Intelligence. Experienced in robot software across the board. Interested in understanding how physical systems work, modelling and controlling them, as well as in perception and ML.",
 };
 
 // Keep in sync with the Skills section of resume/resume.tex
