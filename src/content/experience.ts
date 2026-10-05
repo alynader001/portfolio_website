@@ -1,4 +1,5 @@
-// Work experience shown on the homepage, newest first. Keep roles and dates in sync with resume/resume.tex.
+// Work experience shown on the homepage: full-time roles newest first, then part-time roles (also newest first).
+// Keep roles and dates in sync with resume/resume.tex.
 // `slug` means there's a write-up at src/content/experience/<slug>.mdx (shown at /experience/<slug>).
 // `relatedHref` links the row somewhere else instead, e.g. a project page about that work.
 export type Job = {
@@ -11,6 +12,8 @@ export type Job = {
   stack: string[];
   slug?: string;
   relatedHref?: string;
+  /** Shown with a "Part-time" label; keep these at the end of the list */
+  partTime?: boolean;
 };
 
 export const jobs: Job[] = [
@@ -26,15 +29,6 @@ export const jobs: Job[] = [
     slug: "red-rabbit-robotics",
   },
   {
-    role: "Robotics Research Assistant",
-    company: "Active & Interactive Robotics Lab, University of Waterloo",
-    companyUrl: "https://uwaterloo.ca/active-and-interactive-robotics-lab/",
-    location: "Waterloo, ON",
-    dates: "Sep 2025 – Dec 2025",
-    summary: "Explored methods for implementing impedance control on PAL Robotics' TIAGo Pro.",
-    stack: ["Impedance Control"],
-  },
-  {
     role: "Robotics Perception and Control R&D",
     company: "Robotic Interaction, Perception and Learning Lab, University of Waterloo",
     companyUrl: "https://www.ripl-lab.com/home",
@@ -44,16 +38,6 @@ export const jobs: Job[] = [
       "Factor-graph (GTSAM) estimation of how articulated and flexible objects move, plus joint and Cartesian impedance control with time-optimal trajectory tracking on a Franka Emika Panda.",
     stack: ["C++", "Python", "ROS2", "GTSAM", "Eigen"],
     relatedHref: "/projects/articulation-estimation",
-  },
-  {
-    role: "Electrical Engineer",
-    company: "Waterloo Aerial Robotics Group",
-    location: "Waterloo, ON",
-    dates: "Feb 2025 – Aug 2025",
-    summary:
-      "Created the PCB layout for an STM32-based CAN-to-UART adapter that bridges sensor data onto the drone's CAN bus, and assembled PCBs with reflow soldering and wire harnessing for a small airplane.",
-    stack: ["Altium", "PCB Design", "STM32", "CAN"],
-    relatedHref: "/projects/can-uart-adapter",
   },
   {
     role: "Platform Software Developer",
@@ -80,5 +64,25 @@ export const jobs: Job[] = [
     summary:
       "Built an algorithm that decodes multiplexed CAN bus data using DBC files, which became a new product for customers, plus a full-stack page with AWS DynamoDB for creating custom ECU configuration files.",
     stack: ["JavaScript", "CAN", "AWS DynamoDB", "Onshape"],
+  },
+  {
+    role: "Robotics Research Assistant",
+    company: "Active & Interactive Robotics Lab, University of Waterloo",
+    companyUrl: "https://uwaterloo.ca/active-and-interactive-robotics-lab/",
+    location: "Waterloo, ON",
+    dates: "Sep 2025 – Dec 2025",
+    summary: "Explored impedance control on PAL Robotics' TIAGo Pro.",
+    stack: ["Impedance Control"],
+    partTime: true,
+  },
+  {
+    role: "Electrical Engineer",
+    company: "Waterloo Aerial Robotics Group",
+    location: "Waterloo, ON",
+    dates: "Feb 2025 – Aug 2025",
+    summary: "PCB layout for a CAN-to-UART adapter, plus PCB assembly and wire harnessing.",
+    stack: ["Altium", "PCB Design"],
+    partTime: true,
+    relatedHref: "/projects/can-uart-adapter",
   },
 ];
