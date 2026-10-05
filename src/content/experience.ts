@@ -46,6 +46,16 @@ export const jobs: Job[] = [
     relatedHref: "/projects/articulation-estimation",
   },
   {
+    role: "Electrical Engineer",
+    company: "Waterloo Aerial Robotics Group",
+    location: "Waterloo, ON",
+    dates: "Feb 2025 – Aug 2025",
+    summary:
+      "Created the PCB layout for an STM32-based CAN-to-UART adapter that bridges sensor data onto the drone's CAN bus, and assembled PCBs with reflow soldering and wire harnessing for a small airplane.",
+    stack: ["Altium", "PCB Design", "STM32", "CAN"],
+    relatedHref: "/projects/can-uart-adapter",
+  },
+  {
     role: "Platform Software Developer",
     company: "Ford Motor Company",
     location: "Kanata, ON",
@@ -61,5 +71,14 @@ export const jobs: Job[] = [
     summary:
       "Automated and manual testing on Qualcomm, Bosch, and NXP ECUs running QNX and Android Automotive, supporting proof-of-concept demos for OEMs like Nissan and Ford.",
     stack: ["QNX", "Android Automotive", "Testing"],
+  },
+  {
+    role: "Software Engineering Intern",
+    company: "Audesse Automotive",
+    location: "Kitchener, ON",
+    dates: "May 2023 – Aug 2023",
+    summary:
+      "Built an algorithm that decodes multiplexed CAN bus data using DBC files, which became a new product for customers, plus a full-stack page with AWS DynamoDB for creating custom ECU configuration files.",
+    stack: ["JavaScript", "CAN", "AWS DynamoDB", "Onshape"],
   },
 ];

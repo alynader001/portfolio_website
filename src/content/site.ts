@@ -2,10 +2,10 @@
 export const site = {
   name: "Aly Ahmed",
   logo: { src: "/images/site/logo.png", width: 1024, height: 1024 },
-  // Both scroll to their homepage section; `activePrefix` highlights the item on that section's detail pages
+  // Both scroll to their homepage section
   nav: [
-    { label: "Experience", href: "/#experience", activePrefix: "/experience" },
-    { label: "Projects", href: "/#projects", activePrefix: "/projects" },
+    { label: "Experience", href: "/#experience" },
+    { label: "Projects", href: "/#projects" },
   ],
   resume: { label: "resume", href: "/resume.pdf" },
   email: { label: "email", href: "mailto:anwaahme@uwaterloo.ca" },
@@ -18,7 +18,7 @@ export const hero = {
   lastName: "Ahmed",
   tagLine: "Mechatronics Engineer",
   intro:
-    "Mechatronics Engineering student at the University of Waterloo (AI option) with hands-on experience in robot control, vision, and perception. I'm especially interested in modelling systems, from robot dynamics to the objects robots interact with, and turning those models into software that runs on real hardware.",
+    "Honours Mechatronics Engineering student with the AI option at the University of Waterloo. I have hands-on experience in robot control, vision, and perception, and I'm especially interested in modelling systems and turning those models into software that runs on real hardware.",
 };
 
 // Keep in sync with the Skills section of resume/resume.tex

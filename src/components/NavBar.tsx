@@ -4,14 +4,12 @@ import clsx from "clsx";
 import React, { useState } from "react";
 import Image from "next/image";
 import { MdMenu, MdClose } from "react-icons/md";
-import { usePathname } from "next/navigation";
 import { site } from "@/content/site";
 import SiteLink from "./SiteLink";
 import SocialLinks from "./SocialLinks";
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
 
   return (
     <nav aria-label="Main navigation" className="md:-mx-4">
@@ -44,7 +42,7 @@ export default function NavBar() {
             <MdClose />
           </button>
           <ul className="flex flex-col items-end gap-4">
-            {site.nav.map(({ href, label, activePrefix }) => (
+            {site.nav.map(({ href, label }) => (
               <li key={label}>
                 <SiteLink
                   className={clsx(
@@ -52,14 +50,10 @@ export default function NavBar() {
                   )}
                   href={href}
                   onClick={() => setOpen(false)}
-                  aria-current={pathname.startsWith(activePrefix) ? "page" : undefined}
                 >
                   <span
                     className={clsx(
-                      "absolute inset-0 z-0 h-full rounded bg-green-600 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
-                      pathname.startsWith(activePrefix)
-                        ? "translate-y-6"
-                        : "translate-y-18",
+                      "absolute inset-0 z-0 h-full translate-y-18 rounded bg-green-600 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
                     )}
                   />
                   <span className="relative">{label}</span>
@@ -71,7 +65,7 @@ export default function NavBar() {
             </li>
           </ul>
         </div>
-        <DesktopMenu pathname={pathname} />
+        <DesktopMenu />
       </div>
     </nav>
   );
@@ -95,10 +89,10 @@ function NameLogo() {
   );
 }
 
-function DesktopMenu({ pathname }: { pathname: string }) {
+function DesktopMenu() {
   return (
     <ul className="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
-      {site.nav.map(({ href, label, activePrefix }, index) => (
+      {site.nav.map(({ href, label }, index) => (
         <React.Fragment key={label}>
           <li>
             <SiteLink
@@ -106,14 +100,10 @@ function DesktopMenu({ pathname }: { pathname: string }) {
                 "group relative block overflow-hidden rounded px-3 py-1 text-base font-bold text-slate-900",
               )}
               href={href}
-              aria-current={pathname.startsWith(activePrefix) ? "page" : undefined}
             >
               <span
                 className={clsx(
-                  "absolute inset-0 z-0 h-full rounded bg-green-600 transition-transform  duration-300 ease-in-out group-hover:translate-y-0",
-                  pathname.startsWith(activePrefix)
-                    ? "translate-y-6"
-                    : "translate-y-8",
+                  "absolute inset-0 z-0 h-full translate-y-8 rounded bg-green-600 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
                 )}
               />
               <span className="relative">{label}</span>
