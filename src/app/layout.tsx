@@ -15,11 +15,6 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.alynader.com"),
   title: "Aly Ahmed",
   description: "Aly Ahmed's personal portfolio",
-  icons: {
-    icon: [
-      { url: "/apple-icon.png", sizes: "any" }
-    ]
-  }
 };
 
 export default function RootLayout({
